@@ -30,6 +30,20 @@ module.exports = appInfo => {
       freezeTableName: true,
     },
   };
+
+  config.io = {
+    init: {},
+    namespace: {
+      '/': {
+        connectionMiddleware: [ 'auth' ],
+        packetMiddleware: [ 'filter' ],
+      },
+      '/chat': {
+        connectionMiddleware: [ 'auth' ],
+        packetMiddleware: [],
+      },
+    },
+  };
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',

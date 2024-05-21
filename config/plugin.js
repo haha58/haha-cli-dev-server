@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
 /** @type Egg.EggPlugin */
-//一定记得删除这个 否则会返回空
+// 一定记得删除这个 否则会返回空
 // module.exports = {
 //   // had enabled by egg
 //   // static: {
@@ -10,5 +10,9 @@
 // }
 exports.sequelize = {
   enable: true,
-  package: 'egg-sequelize'
-}
+  package: 'egg-sequelize',
+};
+exports.io = {
+  enable: true,
+  package: 'egg-socket.io',
+};
