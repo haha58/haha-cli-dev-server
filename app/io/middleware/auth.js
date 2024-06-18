@@ -6,7 +6,7 @@ module.exports = () => {
     const { id } = socket;
     const query = socket.handshake.query;
     try {
-      logger.info('query', query, id);
+      logger.info('query', query);
       socket.emit('id', helper.parseMsg('connect', {
         type: 'connect',
         message: '云构建服务连接成功',
