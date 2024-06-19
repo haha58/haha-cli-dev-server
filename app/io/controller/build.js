@@ -3,7 +3,7 @@
 const REDIS_PREFIX = 'cloudbuild';
 
 const helper = require('../../extend/helper');
-const CloudBuildTask = require('../../model/cloudbuild-task');
+const CloudBuildTask = require('../../models/cloudbuild-task');
 
 async function createCloudBuildTask(ctx, app) {
   const { socket } = ctx;
@@ -19,7 +19,7 @@ async function createCloudBuildTask(ctx, app) {
     version: task.version,
     branch: task.branch,
     buildCmd: task.buildCmd,
-  });
+  }, ctx);
 }
 
 module.exports = app => {
