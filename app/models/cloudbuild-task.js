@@ -4,6 +4,8 @@ const userHome = require('user-home');
 const fse = require('fs-extra');
 const path = require('path');
 const Git = require('simple-git');
+const { SUCCESS, FAILED } = require('../const');
+
 // 主要是云构建任务
 class CloudBuildTask {
   constructor(options, ctx) {
@@ -24,6 +26,21 @@ class CloudBuildTask {
     fse.ensureDirSync(this._dir);
     fse.emptyDirSync(this._dir);
     this._git = new Git(this._dir);
+    return this.success();
+  }
+
+  success(message, data) {
+    return this.response(SUCCESS, message, data);
+  }
+
+  failed(message, data) {
+    return this.response(FAILED, message, data);
+  }
+  // 对结果进行处理在response定制
+  response(code, message, data) {
+    return {
+      code, message, data,
+    };
   }
 }
 module.exports = CloudBuildTask;
